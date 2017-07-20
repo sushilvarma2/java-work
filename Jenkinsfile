@@ -15,6 +15,16 @@ pipeline {
 }
 
 }     
+stage('build') {
+        agent {
+                label 'apache'
+                }
+
+
+        steps {
+                sh 'ant -f build.xml -v'
+}
+}
 	stage('Deploy') { 
 		agent {
                 	label 'apache'
@@ -27,16 +37,6 @@ pipeline {
 
 }
 
-stage('build') {
-	agent {
-                label 'apache'
-                }
-
-
-	steps {
-		sh 'ant -f build.xml -v'
-}
-}
 	stage('Running on apache') { 
 	agent { label 'apache'  }		
  	steps { 
