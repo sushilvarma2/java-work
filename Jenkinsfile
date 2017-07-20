@@ -31,7 +31,8 @@ stage('build') {
                 }
 
 	   steps { 
-		sh 'cp dist/rectangle.jar /var/www/html/rectangles/all'
+		sh "mkdir /var/www/html/rectangles/all/${env.$BRANCH_NAME}"
+		sh 'cp dist/rectangle.jar /var/www/html/rectangles/all/${env.$BRANCH_NAME}'
 
 }
 
@@ -47,7 +48,7 @@ stage('build') {
 }
 stage('Promote to Green') {
         agent { 
-		label 'apache'  
+		label 'master'  
 	      }
        when { 
 	branch 'development'		
