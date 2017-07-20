@@ -40,7 +40,7 @@ stage('build') {
 	stage('Running on apache') { 
 	agent { label 'apache'  }		
  	steps { 
-	sh "http://varmasushil5.mylabserver.com/rectangles/all/rectangle.jar"
+	sh "wget http://varmasushil5.mylabserver.com/rectangles/all/rectangle.jar"
 	sh "java -jar rectangle.jar 4 5"
 }
 
