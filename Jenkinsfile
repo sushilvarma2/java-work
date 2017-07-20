@@ -49,7 +49,10 @@ stage('Promote to Green') {
         agent { 
 		label 'apache'  
 	      }
-        steps {
+       when { 
+	branch 'development'		
+		} 
+	 steps {
         sh "cp /var/www/html/rectangles/all/rectangle.jar /var/www/html/rectangles/green/rectangle.jar"
 }
 
