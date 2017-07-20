@@ -45,13 +45,12 @@ stage('build') {
 }
 
 }
-stage('Running on docker container') {
+stage('Promote to Green') {
         agent { 
-		docker 'openjdk:8u131-jre'  
+		label 'apache'  
 	      }
         steps {
-        sh "wget http://varmasushil5.mylabserver.com/rectangles/all/rectangle.jar"
-        sh "java -jar rectangle.jar 4 5"
+        sh "cp /var/www/html/rectangles/all/rectangle.jar /var/www/html/rectangles/green/rectangle.jar"
 }
 
 }
